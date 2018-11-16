@@ -1,8 +1,9 @@
-# DSCI522_Pall-v_sedv8808
-
-
-## Spotify Analysis Proposal
-
+---
+title: "Conclusion_Report"
+author: "Socorro Dominguez and Paul Vial"
+date: '2018-11-16'
+output: pdf_document
+---
 
 In music, most notes can have a lower or a higher pitch. Same as with beats making a song more "likeable", we believe that the mode of a song interfers on a person's preference to listen to it more. 
 
@@ -34,3 +35,4 @@ Alternative Hypothesis: Songs with mode 1 are not listened in the same proportio
 4) In order to evaluate this proportions, we need to do some wrangling between Spotify data bases. In the top 100, we need to merge all the attributes of each song - particullarly, mode.
 
 We will consider a threshold of 0.05.
+
