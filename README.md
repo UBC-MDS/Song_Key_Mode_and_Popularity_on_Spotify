@@ -3,34 +3,35 @@
 
 ## Spotify Analysis Proposal
 
+In music, "keys" are sets of notes which sound harmonious together.  One of the most distinguishing features of a musical key is its "mode" which we can categorize as "major" or "minor."  These two modes affect the mood of music similarly to how certain beats may make songs more "likeable." Music that is written in a major key mode usually sounds happy, while music that is written in a minor key mode usually sounds sad or serious.  We are interested in whether these modes (major vs. minor) of songs' keys affect their popularity.
 
-In music, most notes can have a lower or a higher pitch. Same as with beats making a song more "likeable", we believe that the mode of a song interfers on a person's preference to listen to it more. 
+Through this evaluation, we will go through Spotify's data sets to analyze whether people are actively listening to more songs that are in major key modes or minor key modes. As a null hypothesis, we would state that this mode would not affect songs' popularity. 
 
-Through this evaluation, we will go through spotify's data sets to analize whether people are actively listening to more songs that are on the higher or lower mode. As a null hypothesis, we would think this mode would not interfer with likeability. 
-
-
-1) Question: Does a song with a higher note make it more likeable?
-
-2) Name of dataset: Top Spotify Tracks of 2017 (top-tracks-of-2017.csv) and Spotify's Worldwide Daily Song Ranking (data.csv)
+**1) Name of dataset:** Top Spotify Tracks of 2017 (top-tracks-of-2017.csv) and Spotify's Worldwide Daily Song Ranking (data.csv)
 
 Link to the data sets: We loaded the dataset using tidyverse in R.
 
 https://www.kaggle.com/edumucelli/spotifys-worldwide-daily-song-ranking
 https://www.kaggle.com/nadintamer/top-tracks-of-2017
 
+**2) Question** (inferential): Is there an association between the key mode (major or minor) of songs and their popularity?
 
-3) Analysis:
+**3) Analysis:**
 
-We want to determine if the role of a mode modifies the popularity of a song in Spotify. We know the 100 most popular songs, however, we would like to see what the 10 most popular usually look like.
+We want to determine if key mode is associated with the song popularity in Spotify. We know the 100 most popular songs. However, we might analyze the key mode of the 10 most popular ones.
 
-Our estimate would be the proportion of songs with mode 1 and songs with mode 0 in the top 10.
+Our estimate would compare the proportion of songs in a major key mode that rank within the 10 most popular to the proportion of songs in a minor key mode that rank within the 10 most popular.
 
-In order to do this analysis, we will use Hypothesis tests and confidence intervals to see how the proportions change for different groups depending on the mode.
+In order to do this analysis, we will use hypothesis tests and confidence intervals to see how the proportions change for the 2 groups depending on the key mode.
 
-Null Hypothesis : Songs with mode 1 are listenend just as much as songs with mode 0. (Same proportion)
+Null Hypothesis: Songs in a major key mode are listened to in the same proportion as songs in a minor key mode by Spotify users.
 
-Alternative Hypothesis: Songs with mode 1 are not listened in the same proportion as songs with mode 0.
+Alternative Hypothesis: Songs in a major key mode are listened to in the same proportion as songs in a major key mode by Spotify users.
 
-4) In order to evaluate this proportions, we need to do some wrangling between Spotify data bases. In the top 100, we need to merge all the attributes of each song - particullarly, mode.
+In order to evaluate these proportions, we need to do some wrangling between the Spotify datasets. In the top 100, we need to merge all of the attributes of each song - particularly, `mode` which is the variable that represents key mode in the dataset.
 
-We will consider a threshold of 0.05.
+We will consider a threshold of 0.05 for our hypothesis test.
+
+**4) Summarization Suggestions:**
+
+We might summarize the data as a p-value for our null hypothesis along with a table containing our test statistic and confidence intervals for the popularity of the songs in each of the two key modes.  We could visualize the data in this table as error bars in a plot overlaid with a jitter plot of our sample observations.
