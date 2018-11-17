@@ -1,5 +1,8 @@
 # DSCI522_Pall-v_sedv8808
 
+Team Members
+[Paul Vial](https://github.com/Pall-v)
+[Socorro Dominguez](https://github.com/sedv8808)
 
 ## Spotify Analysis Proposal
 
