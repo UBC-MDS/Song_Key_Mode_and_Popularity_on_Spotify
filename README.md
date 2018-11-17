@@ -9,10 +9,14 @@ Through this evaluation, we will go through Spotify's data sets to analyze wheth
 
 **1) Name of dataset:** Top Spotify Tracks of 2017 (top-tracks-of-2017.csv) and Spotify's Worldwide Daily Song Ranking (data.csv)
 
-Link to the data sets: We loaded the dataset using tidyverse in R.
+Link to the data sets: We loaded the dataset using tidyverse in R. 
 
 https://www.kaggle.com/edumucelli/spotifys-worldwide-daily-song-ranking
 https://www.kaggle.com/nadintamer/top-tracks-of-2017
+
+You can view the script to load in R [here](https://github.com/UBC-MDS/DSCI522_Pall-v_sedv8808/tree/master/src/Load_data.R)
+
+![](img/01_loaded_data.png)
 
 **2) Question** (inferential): Is there an association between the key mode (major or minor) of songs and their popularity?
 
