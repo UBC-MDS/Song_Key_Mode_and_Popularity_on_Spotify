@@ -24,13 +24,13 @@ You can view the script to load in R [here](https://github.com/UBC-MDS/DSCI522_P
 
 We want to determine if key mode is associated with the song popularity in Spotify. We know the 100 most popular songs. However, we might analyze the key mode of the 10 most popular ones.
 
-Our estimate would compare the proportion of songs in a major key mode that rank within the 10 most popular to the proportion of songs in a minor key mode that rank within the 10 most popular.
+Our estimate could compare the proportion of songs in a major key mode that rank within the 10 most popular to the proportion of songs in a minor key mode that rank within the 10 most popular.
 
-In order to do this analysis, we will use hypothesis tests and confidence intervals to see how the proportions change for the 2 groups depending on the key mode.
+In order to do this analysis, we will use hypothesis tests and confidence intervals to see how the proportions differ the 2 groups depending on the key mode.
 
-Null Hypothesis: Songs in a major key mode are listened to in the same proportion as songs in a minor key mode by Spotify users.
+Null Hypothesis: Songs in a major key mode are streamed in the same proportion as songs in a minor key mode by Spotify users.
 
-Alternative Hypothesis: Songs in a major key mode are listened to in the same proportion as songs in a major key mode by Spotify users.
+Alternative Hypothesis: Songs in a major key mode are streamed disproportionately to songs in a major key mode by Spotify users.
 
 In order to evaluate these proportions, we need to do some wrangling between the Spotify datasets. In the top 100, we need to merge all of the attributes of each song - particularly, `mode` which is the variable that represents key mode in the dataset.
 
