@@ -1,8 +1,8 @@
 # DSCI522_Pall-v_sedv8808
 
-Team Members
-[Paul Vial](https://github.com/Pall-v)
-[Socorro Dominguez](https://github.com/sedv8808)
+**Team Members**<br>
+[Paul Vial](https://github.com/Pall-v) <br>
+[Socorro Dominguez](https://github.com/sedv8808)<br>
 
 ## Spotify Analysis Proposal
 
@@ -14,7 +14,7 @@ Through this evaluation, we will go through Spotify's data sets to analyze wheth
 
 Link to the data sets: We loaded the dataset using tidyverse in R. 
 
-https://www.kaggle.com/edumucelli/spotifys-worldwide-daily-song-ranking
+https://www.kaggle.com/edumucelli/spotifys-worldwide-daily-song-ranking <br>
 https://www.kaggle.com/nadintamer/top-tracks-of-2017
 
 You can view the script to load in R [here](https://github.com/UBC-MDS/DSCI522_Pall-v_sedv8808/tree/master/src/Load_data.R)
