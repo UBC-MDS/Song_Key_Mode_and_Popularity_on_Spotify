@@ -8,7 +8,7 @@
 # This script inputs the `Top Tracks of 2017.csv` and gives out a tidy form of data.
 # variable from a .csv file. This script takes a filename.
 #
-# Usage: Rscript 01_Load_data.R ../data/top-tracks-of-2017.csv ../data/clean_top_tracks.csv
+# Usage: Rscript src/01_Load_data.R data/top-tracks-of-2017.csv data/clean_top_tracks.csv
 
 # read in command line arguments
 library(tidyverse)
