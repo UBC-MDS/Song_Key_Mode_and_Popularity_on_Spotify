@@ -20,6 +20,7 @@ output_file <- args[2]
 # read in data
 main <- function(){ 
   data <- read_csv(input_file)
+  data$rank <- seq.int(nrow(data)) # add rank asa avariable
   clean_data <- write_csv(data, output_file)
 
 }  
