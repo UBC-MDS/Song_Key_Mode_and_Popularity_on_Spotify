@@ -29,7 +29,7 @@ main <- function(){
     group_by(mmode) %>% 
     summarize(avg_rank = mean(rank), count = n()) %>% 
     mutate(diff_estimate = diff(avg_rank))   # calculate the test statistic
-
+  
   # write summary to output file
   summary_data <- write_csv(rank_summary, output_file)
 }  

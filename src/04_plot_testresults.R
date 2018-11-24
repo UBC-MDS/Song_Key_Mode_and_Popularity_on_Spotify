@@ -72,8 +72,8 @@ main <- function(){
   summary <- left_join(summary, mode_means_CIs)
   colnames(summary) <- c("key_mode", "average_rank", "count", "diff_estimate", "lower_ci", "upper_ci")
   
-  # Calculate confidence interval for diffeence in means
-  (threshold <- quantile(null_dist$stat, c(alpha, 1-alpha)))
+  # Calculate confidence interval for difference in means
+  (threshold <- quantile(null_dist$stat, c(alpha/2, 1-alpha/2)))
   
   # Extract the original sample's test statistic from the summary input file
   rank_diff_estimate <- summary[['diff_estimate']][[1]]
