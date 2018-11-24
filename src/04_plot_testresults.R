@@ -56,7 +56,7 @@ main <- function(){
   p_value <- null_dist %>% 
     get_pvalue(obs_stat = rank_diff_estimate, direction = "two_sided")
   
-  # write plot to output file
+  # write the following plot to output file
   png(output_file)
   
   # visualize the null distribution with confidence interval and the test statistic from the original sample
@@ -65,7 +65,8 @@ main <- function(){
                               threshold[[2]]), 
                color = "blue",
                lty = 2) +
-    geom_vline(xintercept = rank_diff_estimate, color = "red")
+    geom_vline(xintercept = rank_diff_estimate, color = "red") +
+    xlab("difference in mean song ranking between key-modes")
 }
 
 # call main function
