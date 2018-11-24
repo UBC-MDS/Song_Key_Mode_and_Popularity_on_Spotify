@@ -31,13 +31,13 @@ Our estimate could compare the proportion of songs in a major key mode that rank
 
 In order to do this analysis, we will use hypothesis tests and confidence intervals to see how the proportions differ the 2 groups depending on the key mode.
 
-Null Hypothesis: Songs in a major key mode are streamed in the same proportion as songs in a minor key mode by Spotify users.
+Null Hypothesis: The average Spotify ranking for songs in a major key is equal to average Spotify ranking for songs in a minor key.
 
 Alternative Hypothesis: Songs in a major key mode are streamed disproportionately to songs in a major key mode by Spotify users.
 
 In order to evaluate these proportions, we need to do some wrangling between the Spotify datasets. In the top 100, we need to merge all of the attributes of each song - particularly, `mode` which is the variable that represents key mode in the dataset.
 
-We will consider a threshold of 0.05 for our hypothesis test.
+We will consider a threshold of 0.1 for our hypothesis test.
 
 **4) Summarization Suggestions:**
 
