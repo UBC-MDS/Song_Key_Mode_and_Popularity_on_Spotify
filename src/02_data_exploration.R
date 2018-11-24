@@ -25,6 +25,8 @@ input <- args[1]
 output1 <- args[2]
 output2 <- args[3]
 
+
+main <- function(){ 
 # Data analysis on `mode` and `ranking`
 
 clean_data <- read_csv(input,
@@ -110,3 +112,7 @@ valence <- ggplot(data = clean_data, aes(x=mmode, y=valence)) +
 figure02 <- grid.arrange(dance, energy, key, loud, acoustic, tempo, live, valence, ncol = 4, top = "Mode vs. Other Features")
 
 ggsave(output2, plot = figure02)
+}
+
+# call main function
+main()
