@@ -93,6 +93,7 @@ main <- function(){
     annotate("text", x = 15, y = 1500, label = paste("P-Value", p_value))
 
   # write the above plot to output file
+
   ggsave(output_file_1)
   
   # visualize the estimates and key-mode ranking means' ci's side by side
