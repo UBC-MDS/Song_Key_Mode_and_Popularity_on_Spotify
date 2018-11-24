@@ -15,7 +15,7 @@
 # This script takes three arguments: a path/filename pointing to the data, a path/filename pointing to the summarized data statistics, and
 # a path/filename prefix where to write the plot to and what to call it.
 #
-# Usage: Rscript plot_testresults.R ../data/clean_top-tracks-of-2017.csv ../data/summary_data.csv ../results/figure/test_distribution_plot.png
+# Usage: Rscript src/04_plot_testresults.R ./data/clean_top_tracks.csv ./data/summary_data.csv ./results/figure/Fig03_Test_Ddistr_Plot.png
 
 library(tidyverse)
 library(infer)
@@ -34,14 +34,14 @@ main <- function(){
   
   # make rank and mode a factor
   mode_rank <- data %>% 
-    mutate(mode = factor(mode), rank = rank)
+    mutate(mmode = factor(mmode), rank = rank)
   
   # generate simulated data under a model of the null hypothesis 
   # and calculate the test statistic for each simulated sample
   set.seed(123)
   null_dist <- mode_rank %>% 
     # filter(mode == 0) %>% 
-    specify(response = rank, explanatory = mode) %>% 
+    specify(response = rank, explanatory = mmode) %>% 
     hypothesize(null = "independence") %>% 
     generate(reps = 10000, type = "permute") %>% 
     calculate(stat = "diff in means", order = c("0", "1"))

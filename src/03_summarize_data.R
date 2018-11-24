@@ -10,7 +10,7 @@
 # This script takes 2 arguments: a path/filename pointing to the data, and a path/filename where to write the file 
 # to and what to call it 
 #
-# Usage: Rscript summarize_data.R ../data/clean_top-tracks-of-2017.csv ../data/summary_data.csv
+# Usage: Rscript src/03_summarize_data.R ./data/clean_top_tracks.csv ./data/summary_data.csv
 
 library(tidyverse)
 
@@ -26,7 +26,7 @@ main <- function(){
   
   # calculate and summarize the ranking data statistics
   rank_summary <- data %>% 
-    group_by(mode) %>% 
+    group_by(mmode) %>% 
     summarize(avg_rank = mean(rank), count = n()) %>% 
     mutate(diff_estimate = diff(avg_rank))   # calculate the test statistic
 
