@@ -10,7 +10,7 @@
 # This script inputs the clean data frame `clean_top_tracks.csv` and gives out 2 visualizations.
 # variable from a .csv file. This script takes a filename.
 
-# Usage: Rscript src/02_data_exploration.R
+# Usage: Rscript src/02_data_exploration.R data/clean_top_tracks.csv ./results/figure/Fig01_Mode_Viz.png ./results/figure/Fig02_Explore_Mode_and_Features.png
 
 # Required packages
 library(readr)
@@ -20,9 +20,16 @@ library(dplyr)
 library(gridExtra)
 
 
+args <- commandArgs(trailingOnly = TRUE)
+input <- args[1]
+output1 <- args[2]
+output2 <- args[3]
+
+
+main <- function(){ 
 # Data analysis on `mode` and `ranking`
 
-clean_data <- read_csv("./data/clean_top_tracks.csv",
+clean_data <- read_csv(input,
                        col_types = cols(mmode = col_character()))
 
 #### Data exploration ####
@@ -40,8 +47,9 @@ figure01 <- ggplot(data = clean_data) +
 
 figure01 <- figure01 + guides(fill=FALSE)
 
-ggsave(filename = "Fig01_Mode_Viz.png", plot = figure01, device = "png", 
-       path = "./results/figure")
+ggsave(output1, plot = figure01)
+#  filename = "Fig01_Mode_Viz.png", plot = figure01, device = "png", 
+#       path = "./results/figure")
 
 
 # How does the mode interact with other features?
@@ -103,5 +111,8 @@ valence <- ggplot(data = clean_data, aes(x=mmode, y=valence)) +
 
 figure02 <- grid.arrange(dance, energy, key, loud, acoustic, tempo, live, valence, ncol = 4, top = "Mode vs. Other Features")
 
-ggsave(filename = "Fig02_Explore_Mode_and_Features.png", plot = figure02, device = "png", 
-       path = "./results/figure")
+ggsave(output2, plot = figure02)
+}
+
+# call main function
+main()
