@@ -10,7 +10,7 @@
 # November 2018
 
 # This script simulates data under a model of the null hypothesis and generates a plot of the distribution which includes
-# the confidence interval and test statistic from the sample population.  It write the plot to a file in PNG format.
+# the confidence interval and test statistic from the sample population.  It writes the plot to a file in PNG format.
 #
 # This script takes three arguments: a path/filename pointing to the data, a path/filename pointing to the summarized data statistics, and
 # a path/filename prefix where to write the plot to and what to call it.
