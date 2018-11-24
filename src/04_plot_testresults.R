@@ -92,7 +92,8 @@ main <- function(){
                color = "blue",
                lty = 2) +
     geom_vline(xintercept = rank_diff_estimate, color = "red") +
-    xlab("difference in mean song ranking between key-modes")
+    xlab("Difference in mean song ranking between key-modes") +
+    annotate("text", x = 15, y = 1500, label = paste("P-Value ", p-value))
   
   # dev.off()
   
