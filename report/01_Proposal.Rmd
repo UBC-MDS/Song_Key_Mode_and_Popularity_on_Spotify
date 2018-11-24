@@ -1,7 +1,0 @@
----
-title: "Conclusion_Report"
-author: "Socorro Dominguez and Paul Vial"
-date: '2018-11-16'
-output: pdf_document
----
-
