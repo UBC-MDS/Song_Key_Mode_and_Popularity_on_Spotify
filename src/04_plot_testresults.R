@@ -82,9 +82,6 @@ main <- function(){
   p_value <- null_dist %>% 
     get_pvalue(obs_stat = rank_diff_estimate, direction = "two_sided")
   
-  # write the following plot to output file
-  # png(output_file_1)
-  
   # visualize the null distribution with confidence interval and the test statistic from the original sample
   (null_dist_plot <- null_dist %>% visualize()) +
     geom_vline(xintercept = c(threshold[[1]], 
@@ -92,12 +89,10 @@ main <- function(){
                color = "blue",
                lty = 2) +
     geom_vline(xintercept = rank_diff_estimate, color = "red") +
-    xlab("difference in mean song ranking between key-modes")
-  
-  # dev.off()
-  
-  # write the following plot to output file
-  # png(output_file_2)
+    xlab("Difference in mean song ranking between key-modes") +
+    annotate("text", x = 15, y = 1500, label = paste("P-Value", p_value))
+
+  # write the above plot to output file
   ggsave(output_file_1)
   
   # visualize the estimates and key-mode ranking means' ci's side by side
@@ -113,6 +108,7 @@ main <- function(){
                         labels=c("Minor", "Major")) +
       theme_bw()
   
+  # write the above plot to output file
   ggsave(output_file_2)
 }
 
