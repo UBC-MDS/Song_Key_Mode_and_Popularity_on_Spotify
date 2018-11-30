@@ -12,11 +12,11 @@
 # This script simulates data under a model of the null hypothesis and generates a plot of the distribution which includes
 # the confidence interval and test statistic from the sample population.  It writes the plot to a file in PNG format.
 #
-# This script takes four arguments: a path/filename pointing to the data, a path/filename pointing to the summarized data statistics, and
-# 2 x path/filename prefix where to write the plots to and what to call them.
+# This script takes five arguments: a path/filename pointing to the data, a path/filename pointing to the summarized data statistics, and
+# 3 x path/filename prefix where to write the plots to and what to call them.
 #
 # Usage: 
-# Rscript src/04_plot_testresults.R ./data/clean_top_tracks.csv ./data/summary_data.csv ./results/figure/Fig03_Test_Ddistr_Plot.png ./results/figure/Fig04_Sample_Compare_Plot.png
+# Rscript src/04_plot_testresults.R ./data/clean_top_tracks.csv ./data/summary_data.csv ./results/figure/Fig03_Test_Ddistr_Plot.png ./results/figure/Fig04_Sample_Compare_Plot.png ./results/figure/Fig05_Mode_Over_Rank_Plot.png
 
 library(tidyverse)
 library(infer)
@@ -27,6 +27,7 @@ data_input_file <- args[1] #"./data/clean_top_tracks.csv"
 summary_input_file <- args[2] #"./data/summary_data.csv"
 output_file_1 <- args[3] #"./results/figure/Fig03_Test_Ddistr_Plot.png"
 output_file_2 <- args[4] #"./results/figure/Fig04_Sample_Compare_Plot.png"
+output_file_3 <- args[5] #"./results/figure/Fig05_Mode_Over_Rank_Plot.png"
 
 main <- function(){ 
   
@@ -95,7 +96,6 @@ main <- function(){
     annotate("text", x = 15, y = 1500, label = paste("P-Value", p_value))
 
   # write the above plot to output file
-
   ggsave(output_file_1)
   
   # visualize the estimates and key-mode ranking means' ci's side by side
@@ -106,13 +106,26 @@ main <- function(){
                   width = 0.2) +
       geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), 
                     width = 0.1) +
-      xlab("Song Key-mode") +
       ylab("Ranking") + 
       labs(colour="Key-mode") + # set legend title
       theme_bw()
   
   # write the above plot to output file
   ggsave(output_file_2)
+  
+  ggplot(mode_rank, aes(x = rank, y=c(0))) +
+    geom_dotplot(aes(fill = mmode, colour = mmode), 
+                 dotsize = .9, 
+                 binwidth = 1) +
+    scale_y_discrete() +
+    xlab("Rank") + 
+    labs(fill='Key-mode', colour='Key-mode') +
+    theme_bw() + 
+    theme(axis.title.y=element_blank())
+  
+  # write the above plot to output file
+  ggsave(output_file_3, height = 1.5)
+  
 }
 
 # call main function
