@@ -22,10 +22,12 @@ output_file <- args[2]
 main <- function(){ 
   
   # read in data
-  data <- read_csv(input_file)
+  data <- read_csv(input_file,
+                   col_types = cols(mmode = col_character()))
   
   # calculate and summarize the ranking data statistics
   rank_summary <- data %>% 
+    mutate(mmode = factor(mmode, labels=c("minor", "major"))) %>% 
     group_by(mmode) %>% 
     summarize(avg_rank = mean(rank), count = n()) %>% 
     mutate(diff_estimate = diff(avg_rank))   # calculate the test statistic
