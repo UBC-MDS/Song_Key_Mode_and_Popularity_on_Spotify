@@ -1,22 +1,21 @@
+################################
 #! /usr/bin/env Rscript 
-# quick_load_data.R
-# Socorro Dominguez, 
-# Paul Vial 
-# November 2018
-##! /usr/bin/env Rscript 
 # plot_testresults.R
 # Socorro Dominguez, 
 # Paul Vial 
 # November 2018
-
-# This script simulates data under a model of the null hypothesis and generates a plot of the distribution which includes
-# the confidence interval and test statistic from the sample population.  It writes the plot to a file in PNG format.
 #
-# This script takes five arguments: a path/filename pointing to the data, a path/filename pointing to the summarized data statistics, and
-# 3 x path/filename prefix where to write the plots to and what to call them.
+# This script simulates data under a model of the null hypothesis and generates 
+# a plot of the distribution which includes the confidence interval and test 
+# statistic from the sample population.  It writes the plot to a file in PNG format.
+#
+# This script takes five arguments: a path/filename pointing to the data, a path/filename 
+# pointing to the summarized data statistics, and 3 x path/filename prefix where to write 
+# the plots to and what to call them.
 #
 # Usage: 
 # Rscript src/04_plot_testresults.R ./data/clean_top_tracks.csv ./data/summary_data.csv ./results/figure/Fig03_Test_Ddistr_Plot.png ./results/figure/Fig04_Sample_Compare_Plot.png ./results/figure/Fig05_Mode_Over_Rank_Plot.png
+#################################
 
 library(tidyverse)
 library(infer)
@@ -50,7 +49,7 @@ main <- function(){
   null_dist <- mode_rank %>% 
     specify(response = rank, explanatory = mmode) %>% 
     hypothesize(null = "independence") %>% 
-    generate(reps = 10000, type = "bootstrap") %>% 
+    generate(reps = 10000, type = "permute") %>% 
     calculate(stat = "diff in means", order = c("minor", "major"))
   
   # Get confidence intervals for each key-mode

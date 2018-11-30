@@ -15,15 +15,20 @@ Is the popularity of songs in a major key different than songs in a minor key? (
 
 First of all, in music, "keys" are sets of notes which sound harmonious together. One of the most distinguishing features of a musical key is its "mode" which we can categorize as "major" or "minor." These two modes affect the mood of music similarly to how certain beats may make songs more "likeable." Music written in a major key-mode usually sounds happy, while music written in a minor key-mode usually sounds sad or serious. We are interested in whether these modes (major vs. minor) of songs' keys affect their popularity.
 
+Spotify is a music streaming platform. They have become an important platform as they currently have 191 million users. 87 million of these users, pay in order to be premium users. Their Top 100 is defined by the songs that are streamed the most throught a year. 
+
 Through this evaluation, we go through Spotify's Top 100 2017 data set to analyze whether people are actively listening to more songs that are in major key-modes or minor key-modes. 
 
 Once we load the data, we make a small summary to see actually how many songs in Spotify have a minor or a major mode. <br>
 
-Table01
-```{r, echo = FALSE}
-summary <- read.csv("../data/summary_data.csv")
-summary
-```
+Table01: Summary of how many songs have a major or minor mode
+
+
+| Mode | Avg Rank | Count | Diff. Est. |
+|---|---|---|---|
+|Minor | 48.78 | 42 | 2.9556 |
+|Major | 51.74  | 58 | 2.9556 |
+
 <br>
 
 Figure 1![](../results/figure/Fig01_Mode_Viz.png){ width=70% }
@@ -77,8 +82,10 @@ Given more time in the future, we would like to try a more in-depth analysis and
 
 ## REFERENCES
 
-[Top Spotify Tracks of 2017]("https://www.kaggle.com/nadintamer/top-tracks-of-2017")
+Top Spotify Tracks of 2017, Audio features of top Spotify songs - Retrieved from: https://www.kaggle.com/nadintamer/top-tracks-of-2017
 
-[Wikipedia Major and Minor]("https://en.wikipedia.org/wiki/Major_and_minor")
+Wikipedia Major and Minor - Retrieved from: https://en.wikipedia.org/wiki/Major_and_minor
 
-[Statistical Inference Lecture]("https://github.ubc.ca/MDS-2018-19/DSCI_552_stat-inf-1_students/blob/master/lectures/04_lecture-sim-estimation-wrap-up-and-hyp-test-intro.ipynb")
+UBC MDS Statistical Inference Lecture 04 - Retrieved from: https://github.ubc.ca/MDS-2018-19/DSCI_552_stat-inf-1_students/blob/master/lectures/04_lecture-sim-estimation-wrap-up-and-hyp-test-intro.ipynb
+
+Wikipedia Spotify - Retriefed from: https://en.wikipedia.org/wiki/Spotify
