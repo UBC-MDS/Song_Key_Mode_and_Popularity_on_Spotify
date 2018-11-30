@@ -57,11 +57,13 @@ Check outliers
 
 Plot a graph to see which key-mode appeared more frequently in our data set. 
 
-State hypotheses and determine the level of significance.
+State hypotheses:
 
-\textbf{$H_{0}$}: Songs in a major key-mode have an equal average Spotify ranking to songs in a minor key-mode.
+  Null Hypothesis: Songs in a major key-mode have an equal average Spotify ranking to songs in a minor key-mode.
 
-\textbf{$H_{A}$}: Songs in a major key-mode have different average Spotify ranking than songs in a minor key-mode.
+  Alternative Hypothesis: Songs in a major key-mode have different average Spotify ranking than songs in a minor key-mode.
+  
+Determine the level of significance.
 
 We used "Estimation through simulation" to determine whether songs may rank differently based on their key-modes.
 
