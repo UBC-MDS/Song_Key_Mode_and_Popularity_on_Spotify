@@ -23,15 +23,17 @@ library(infer)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-data_input_file <- args[1] #"./data/clean_top_tracks.csv"
-summary_input_file <- args[2] #"./data/summary_data.csv"
-output_file_1 <- args[3] #"./results/figure/Fig03_Test_Ddistr_Plot.png"
-output_file_2 <- args[4] #"./results/figure/Fig04_Sample_Compare_Plot.png"
+data_input_file <- "./data/clean_top_tracks.csv"
+summary_input_file <- "./data/summary_data.csv"
+output_file_1 <- "./results/figure/Fig03_Test_Ddistr_Plot.png"
+output_file_2 <- "./results/figure/Fig04_Sample_Compare_Plot.png"
 
 main <- function(){ 
   
   # read in data
-  data <- read_csv(data_input_file)
+  data <- read_csv(data_input_file,
+                   col_types = cols(mmode = col_character()))
+  
   summary <- read_csv(summary_input_file)
   
   # set threshold
@@ -39,7 +41,7 @@ main <- function(){
   
   # make rank and mode a factor
   mode_rank <- data %>% 
-    mutate(mmode = factor(mmode), rank = rank)
+    mutate(mmode = factor(mmode, labels=c("minor", "major")), rank = rank)
   
   # generate simulated data under a model of the null hypothesis 
   # and calculate the test statistic for each simulated sample
@@ -48,24 +50,24 @@ main <- function(){
     specify(response = rank, explanatory = mmode) %>% 
     hypothesize(null = "independence") %>% 
     generate(reps = 10000, type = "bootstrap") %>% 
-    calculate(stat = "diff in means", order = c("0", "1"))
+    calculate(stat = "diff in means", order = c("minor", "major"))
   
   # Get confidence intervals for each key-mode
   m0_ci <- mode_rank %>% 
-    filter(mmode == 0) %>% 
+    filter(mmode == "minor") %>% 
     specify(response = rank) %>% 
     generate(reps = 10000, type = "bootstrap") %>% 
     calculate(stat = "mean") %>% 
     get_ci(level = (1 - alpha))
-  m0_ci$mmode <- 0
+  m0_ci$mmode <- "minor"
   
   m1_ci <- mode_rank %>% 
-    filter(mmode == 1) %>% 
+    filter(mmode == "major") %>% 
     specify(response = rank) %>% 
     generate(reps = 10000, type = "bootstrap") %>% 
     calculate(stat = "mean") %>% 
     get_ci(level = (1 - alpha))
-  m1_ci$mmode <- 1
+  m1_ci$mmode <- "major"
   
   # Add the confidence intervals to the summary table
   mode_means_CIs <- bind_rows(m0_ci, m1_ci)
@@ -99,14 +101,10 @@ main <- function(){
   # visualize the estimates and key-mode ranking means' ci's side by side
   ggplot(summary, aes(x = key_mode, y = average_rank)) +
       geom_point() +
-      geom_jitter(aes(x = mmode, y = rank, color = as.character(mmode)), data = data, width = 0.2) +
+      geom_jitter(aes(x = mmode, y = rank, color = mmode), data = mode_rank, width = 0.2) +
       geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.1) +
       xlab("Song Key-mode") +
       ylab("Ranking") + 
-      # scale_x_discrete(labels = c("Minor", "Major")) +
-      scale_fill_discrete(name="Key-mode",
-                        breaks=c("Minor", "Major"),
-                        labels=c("Minor", "Major")) +
       theme_bw()
   
   # write the above plot to output file
@@ -115,3 +113,4 @@ main <- function(){
 
 # call main function
 main()
+
