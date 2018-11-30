@@ -2,9 +2,14 @@
 title: "Song Key Mode & Popularity"
 author: "Socorro Dominguez and Paul Vial"
 date: '2018-11-16'
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, fig.width = 2)
+```
 
 Is the popularity of songs in a major key different than songs in a minor key? (Are they more likely to be in the Top 100?) This is the question we will try to answer by looking at and analyzing Spotify's Top 100 streamed songs! 
 
@@ -25,6 +30,10 @@ Figure 1![](../results/figure/Fig01_Mode_Viz.png){ width=70% }
 
 
 We can read from this graph, that at least for the 2017's Top 100, songs in a major key-mode (or happier sound) were more popular than songs in a minor key-mode (or sad/serious sound). However, this might just be by chance. 
+
+```{r Key-mode distribution over rank, fig.width = 2}
+knitr::include_graphics("../results/figure/Fig05_Mode_Over_Rank_Plot.png")
+```
 
 Out of curiousity, let's also evaluate how other features (danceability, key, loudness, etc) in the song vary with by songs' key-modes:
 
