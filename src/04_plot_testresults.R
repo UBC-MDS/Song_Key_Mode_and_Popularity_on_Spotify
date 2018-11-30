@@ -101,10 +101,14 @@ main <- function(){
   # visualize the estimates and key-mode ranking means' ci's side by side
   ggplot(summary, aes(x = key_mode, y = average_rank)) +
       geom_point() +
-      geom_jitter(aes(x = mmode, y = rank, color = mmode), data = mode_rank, width = 0.2) +
-      geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), width = 0.1) +
+      geom_jitter(aes(x = mmode, y = rank, color = mmode), 
+                  data = mode_rank, 
+                  width = 0.2) +
+      geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), 
+                    width = 0.1) +
       xlab("Song Key-mode") +
       ylab("Ranking") + 
+      labs(colour="Key-mode") + # set legend title
       theme_bw()
   
   # write the above plot to output file
