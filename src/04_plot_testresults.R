@@ -123,7 +123,7 @@ main <- function(){
     theme(axis.title.y=element_blank())
   
   # write the above plot to output file
-  ggsave(output_file_3, height = 1.5)
+  ggsave(output_file_3, height = 1.5, width = 7)
   
 }
 
