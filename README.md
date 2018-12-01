@@ -117,6 +117,8 @@ We wrote four scripts for this project and a report. The scripts are to clean ou
 
 RStudio version 3.5.1
 
+[float](https://ctan.org/pkg/float)
+
 [tidyverse](https://github.com/tidyverse)
 
 [readr](https://github.com/tidyverse/readr)
