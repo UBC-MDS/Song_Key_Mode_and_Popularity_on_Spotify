@@ -71,7 +71,7 @@ knitr::include_graphics("../results/figure/Fig03_Test_Ddistr_Plot.png")
 
 # RESULTS: 
 
-- Our p-value is \textbf{$0.299$}.  As our p-value is larger than the alpha (\textbf{$0.1$}), we do not reject the null hypothesis. 
+- Our p-value is \textbf{$0.622$}.  As our p-value is larger than the alpha (\textbf{$0.1$}), we do not reject the null hypothesis. 
 
 Our dataset is the top 100 songs which creates a sampling bias.  Ideally, we would be able to compare the proportions of songs in each key-mode from the top 100 to the proportions of songs in each key-mode from a random sample of Spotify songs.
 
