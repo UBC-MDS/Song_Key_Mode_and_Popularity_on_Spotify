@@ -1,7 +1,9 @@
+# Driver script
 # Socorro Dominguez & Paul Vial
 # November 27th, 2018
 
-# Run all
+# usage: make all
+
 all : report/01_keymode_report.pdf
 
 # Run the four scripts
