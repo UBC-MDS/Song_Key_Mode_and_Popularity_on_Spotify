@@ -13,7 +13,11 @@ FROM rocker/tidyverse
 
 
 # Install R packages
-RUN Rscript -e "install.packages('here')"
-RUN Rscript -e "install.packages('imager')"
-RUN Rscript -e "install.packages('tinytex')"
-RUN Rscript -e "tinytex::install_tinytex()"
+RUN R -e "install.packages('here')"
+RUN R -e "install.packages('imager')"
+RUN R -e "install.packages('tinytex')"
+RUN R -e "install.packages('forcats')"
+RUN R -e "install.packages('purrr')"
+RUN R -e "install.packages('stringr')
+RUN R -e "install.packages('dplyr')
+RUN R -e "install.packages('readr')
