@@ -116,3 +116,5 @@ ggsave(output2, plot = figure02)
 
 # call main function
 main()
+sessionInfo()
+
