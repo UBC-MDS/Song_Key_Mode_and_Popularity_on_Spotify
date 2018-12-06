@@ -5,7 +5,8 @@
 # Usage:
 #   To build the docker image: docker build --tag spotify:0.4 .
 #
-# docker run --rm -e PASSWORD="test" -v /Users/Seiryu8808/Desktop/Song_Key_Mode_and_Popularity_on_Spotify:/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify  spotify:0.4 make -C '/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify'
+# docker run --rm -e PASSWORD="test" -v /Users/Seiryu8808/Desktop/Song_Key_Mode_and_Popularity_on_Spotify:/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify  spotify:0.4 make -C '/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify' all
+# docker run --rm -e PASSWORD="test" -v /Users/Seiryu8808/Desktop/Song_Key_Mode_and_Popularity_on_Spotify:/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify  spotify:0.4 make -C '/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify' clean
 
 # Use rocker/tidyverse as the base image
 FROM rocker/tidyverse
