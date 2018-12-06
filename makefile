@@ -46,3 +46,13 @@ clean:
 	rm -f report/01_keymode_report.pdf
 	rm -f report/0101_keymode_report.tex
 	rm -f report/0101_keymode_report.html
+	
+	
+##DEPENDENCY diagram notes:
+#Create a dependency diagram of the Makefile using makefile2graph and include the image in the README.md file in the root of your project.
+#Make this dependency graph build as part of your automated analysis.
+#
+# example for succesfully creating by mounting local folder on tiffany's image:
+# paul$ docker run -it --rm -v /Users/paul/Documents/GitHub/Song_Key_Mode_and_Popularity_on_Spotify:/Song_Key_Mode_and_Popularity_on_Spotify ttimbers/makefile2graph
+# makefile2graph > Makefile.dot
+# dot -Tpng Makefile.dot -o Makefile.png
