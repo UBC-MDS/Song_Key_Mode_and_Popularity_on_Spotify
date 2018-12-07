@@ -133,6 +133,21 @@ We then did a bootstrap distribution and reported a p-value and where our statis
 
 We wrote four scripts for this project and a report. The scripts are to clean our data, explore our data, estimate through simulation and visualize our results. 
 
+## OUR CONCLUSION:
+
+- After evaluating our dataset, and done the statistical analysis, we realized that we cannot reject our Null Hypothesis. That means, there is not enough evidence to say that `mode` alone plays a role in making a song `likable`. 
+
+- We have to take into consideration that our dataset is the top 100 songs which creates a sampling bias.  
+
+- This analysis is very limited due to time constraints. We are only considering one feature of the songs. If we were given more time, we would like to look at what role the other features play and how important the interaction between these features is. 
+
+-How to improve this analysis: We would use another in-depth algorithm. Possible, we would look at a `Decision Tree`. 
+This way, we could consider all other song features. 
+
+- It was fun to play with a real world data set and learn how to make questions about the data that we have in our hands. We also enjoyed the process of understanding how important `reproducibility` is and how to create `docker images` so that other people can reproduce our analysis and give us inputs on how to improve. 
+
+- We also enjoyed seeing how we can apply some of the tools we have so far learned in MDS. 
+
 
 ## Dependencies
 

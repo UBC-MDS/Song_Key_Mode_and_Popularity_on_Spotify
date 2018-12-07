@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Is the popularity of songs in a major key different than songs in a minor key? (Are they more likely to be in the Top 100?) This is the question we will try to answer by looking at and analyzing Spotify's Top 100 streamed songs! 
 
-First of all, in music, "keys" are sets of notes which sound harmonious together. One of the most distinguishing features of a musical key is its "mode" which we can categorize as "major" or "minor." These two modes affect the mood of music similarly to how certain beats may make songs more "likeable." Music written in a major key-mode usually sounds happy, while music written in a minor key-mode usually sounds sad or serious. We are interested in whether these modes (major vs. minor) of songs' keys affect their popularity.
+First of all, in music, "keys" are sets of notes which sound harmonious together. One of the most distinguishing features of a musical key is its "mode" which we can categorize as "major" or "minor." These two modes affect the mood of music similarly to how certain beats may make songs more "likable." Music written in a major key-mode usually sounds happy, while music written in a minor key-mode usually sounds sad or serious. We are interested in whether these modes (major vs. minor) of songs' keys affect their popularity.
 
 Spotify is a music streaming platform. They have become an important platform as they currently have 191 million users. 87 million of these users, pay in order to be premium users. Their Top 100 is defined by the songs that are streamed the most throught a year. 
 
@@ -38,9 +38,9 @@ The next plot shows distribution of key-modes throughout the song rankings that 
 knitr::include_graphics("../results/figure/Fig05_Mode_Over_Rank_Plot.png")
 ```
 
-Out of curiousity, let's also evaluate how other features (danceability, key, loudness, etc) in the song vary with by songs' key-modes:
+Out of curiosity, let's also evaluate how other features (danceability, key, loudness, etc) in the song vary with by songs' key-modes:
 
-```{r, out.width = '80%', fig.cap=' ', fig.pos = 'H'}
+```{r, out.width = '80%', fig.cap='How does mode interact with the other features?', fig.pos = 'H'}
 knitr::include_graphics("../results/figure/Fig02_Explore_Mode_and_Features.png")
 ```
 
@@ -78,6 +78,11 @@ Our dataset is the top 100 songs which creates a sampling bias.  Ideally, we wou
 This analysis is very limited due to time constraints, and we are only taking into consideration one feature of the songs. We would like to analyze all the features and their combinations to see how this affects a song's popularity. 
 
 Given more time in the future, we would like to try a more in-depth analysis and maybe try using a Decision Tree to consider all other song features besides key-mode. 
+
+## OUR CONCLUSION:
+After having evaluated this dataset, and done the statistical analysis, we are sad to discover that there is not enough evidence to reject our Null Hypothesis. That is to say, we are not sure if the mode does make a song more likable or not. 
+
+We would like to look at what role the other features play and how important interaction between these features is. 
 
 ## REFERENCES
 
