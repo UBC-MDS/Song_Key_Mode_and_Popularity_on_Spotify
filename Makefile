@@ -36,6 +36,7 @@ clean:
 	# Remove outputs from second script
 	rm -f results/figure/Fig01_Mode_Viz.png
 	rm -f results/figure/Fig02_Explore_Mode_and_Features.png
+	rm -f Rplots.pdf
 	# Remove outputs from third script
 	rm -f data/summary_data.csv
 	# Remove outputs from fourth script
@@ -44,5 +45,5 @@ clean:
 	rm -f results/figure/Fig05_Mode_Over_Rank_Plot.png
 	# Remove document
 	rm -f report/01_keymode_report.pdf
-	rm -f report/0101_keymode_report.tex
-	rm -f report/0101_keymode_report.html
+	rm -f report/01_keymode_report.tex
+	rm -f report/01_keymode_report.html
