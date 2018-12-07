@@ -14,6 +14,27 @@ Through this evaluation, we went through a data set from Spotify to analyze whet
 
 ## Usage
 
+### Docker
+
+To run this analysis using Docker:
+
+1. Clone/download this repository
+2. Use the command line on your computer to get the [song_key_mode_and_popularity_on_spotify](https://hub.docker.com/r/pvial/song_key_mode_and_popularity_on_spotify/) image from [DockerHub](https://hub.docker.com/): 
+```
+docker pull pvial/song_key_mode_and_popularity_on_spotify
+```
+3. Use the command line to navigate to the root of this project on your computer, and then type the following (filling in *\<Path_on_your_computer\>* with the absolute path to the root of this project on your computer).
+```
+docker run --rm -e PASSWORD="test" -v <Path_on_your_computer>:/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify  pvial/song_key_mode_and_popularity_on_spotify make -C '/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify' all
+```
+
+4. To clean up the analysis type:
+```
+docker run --rm -e PASSWORD="test" -v <Path_on_your_computer>:/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify  pvial/song_key_mode_and_popularity_on_spotify make -C '/home/rstudio/Song_Key_Mode_and_Popularity_on_Spotify' clean
+```
+
+### Without Docker
+
 This repository consists of 4 R scripts and 1 Rmd file.
 In order to run this project, you need to: 
 
@@ -128,6 +149,12 @@ RStudio version 3.5.1
 [dplyr](https://github.com/tidyverse/dpylr)
 
 [gridExtra](https://github.com/cran/gridExtra)
+
+[infer](https://github.com/tidymodels/infer)
+
+[tinytex](https://github.com/yihui/tinytex)
+
+![](./results/figure/Makefile.png)
 
 ## Release version
 

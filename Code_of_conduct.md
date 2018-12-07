@@ -19,7 +19,6 @@ Unacceptable behavior includes the use of sexual language or imagery, derogatory
 
 Project maintainers have the responsibility to remove, edit, or reject comments, commits, code, and other contributions that are not aligned to this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.
 
-
 ## How to Report
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
