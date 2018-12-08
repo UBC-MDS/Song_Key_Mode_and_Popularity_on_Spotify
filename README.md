@@ -36,23 +36,26 @@ docker run --rm -e PASSWORD="test" -v <Path_on_your_computer>:/home/rstudio/Song
 ### Without Docker
 
 This repository consists of 4 R scripts and 1 Rmd file.
-In order to run this project, you need to: 
+<br>
+Use this `Makefile` to generate the report analysing if the feature `mode` makes a difference in a Spotify song to rank in the Top 100. 
+<br>
 
+In order to run this project, you need to: 
 1. Clone or download this repository.
 
 2. Run the following code in the terminal at the project's root repository.
-<br>
 To run the scripts: 
 
 ```
-# Runs all R scripts and generates a report.
+# From the command line.
+
+# To run all the R scripts from beginning to the end. Delivers a final report.
 make all
 
-# Deletes all unnecessary files in case you need to run the project from scratch.
+#	Deletes all unnecessary files in case you need to run the project from scratch.
 make clean
 
 ```
-
 The makefile is the short way of running all R scripts in the following order :
 
 ```
@@ -173,7 +176,7 @@ RStudio version 3.5.1
 
 ## Release version
 
-[V4.0](https://github.com/UBC-MDS/Song_Key_Mode_and_Popularity_on_Spotify/releases/tag/V4.0) Final Project<br>
+[V4.1](https://github.com/UBC-MDS/Song_Key_Mode_and_Popularity_on_Spotify/releases/tag/V4.1) Final Project<br>
 [V3.1](https://github.com/UBC-MDS/Song_Key_Mode_and_Popularity_on_Spotify/releases/tag/V3.1) Milestone 2<br>
 [V2.1](https://github.com/UBC-MDS/Song_Key_Mode_and_Popularity_on_Spotify/releases/tag/V2.1) We are doing this release to adjust the Readme to the TA's expectations for Milestone 1.<br>
 [V2.0](https://github.com/UBC-MDS/Song_Key_Mode_and_Popularity_on_Spotify/releases/tag/v2.0) Milestone 1<br>
