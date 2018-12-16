@@ -22,11 +22,11 @@ library(infer)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-data_input_file <- "./data/clean_top_tracks.csv"
-summary_input_file <- "./data/summary_data.csv"
-output_file_1 <- "./results/figure/Fig03_Test_Ddistr_Plot.png"
-output_file_2 <- "./results/figure/Fig04_Sample_Compare_Plot.png"
-output_file_3 <- "./results/figure/Fig05_Mode_Over_Rank_Plot.png"
+data_input_file <- args[1] #"./data/clean_top_tracks.csv"
+summary_input_file <- args[2] #"./data/summary_data.csv"
+output_file_1 <-  args[3] #"./results/figure/Fig03_Test_Ddistr_Plot.png"
+output_file_2 <-  args[4] #"./results/figure/Fig04_Sample_Compare_Plot.png"
+output_file_3 <-  args[5] #"./results/figure/Fig05_Mode_Over_Rank_Plot.png"
 
 main <- function(){ 
   
