@@ -37,23 +37,29 @@ main <- function(){
   summary <- read_csv(summary_input_file)
   
   # set threshold
-  alpha = 0.1
+  alpha <- 0.1
   
   # make rank and mode a factor
   mode_rank <- data %>% 
     mutate(mmode = factor(mmode, labels=c("minor", "major")), rank = rank)
+
+  # use bootstrapping to generate the statistics and their confidence intervals
+  null_dist <- gen_null_dist(mode_rank)  
+  mode_means_CIs <- get_CIs(mode_rank, alpha)
+
+  # Add the confidence intervals to the summary table
+  summary <- left_join(summary, mode_means_CIs)
+  colnames(summary) <- c("key_mode", "average_rank", "count", "diff_estimate", "lower_ci", "upper_ci")
   
-  # generate simulated data under a model of the null hypothesis 
-  # and calculate the test statistic for each simulated sample
-  set.seed(123)
-  null_dist <- mode_rank %>% 
-    specify(response = rank, explanatory = mmode) %>% 
-    hypothesize(null = "independence") %>% 
-    generate(reps = 10000, type = "permute") %>% 
-    calculate(stat = "diff in means", order = c("minor", "major"))
-  
-  # Get confidence intervals for each key-mode
-  m0_ci <- mode_rank %>% 
+  # Create and save the plots
+  plot_null_dist(summary, null_dist, alpha, output_file_1)
+  plot_compare(summary, mode_rank, output_file_2)
+  plot_keymode_dist(mode_rank, output_file_3)
+}
+
+# Calculates confidence intervals for each key-mode
+get_CIs <- function(data, alpha){
+  m0_ci <- data %>% 
     filter(mmode == "minor") %>% 
     specify(response = rank) %>% 
     generate(reps = 10000, type = "bootstrap") %>% 
@@ -61,27 +67,28 @@ main <- function(){
     get_ci(level = (1 - alpha))
   m0_ci$mmode <- "minor"
   
-  m1_ci <- mode_rank %>% 
+  m1_ci <- data %>% 
     filter(mmode == "major") %>% 
     specify(response = rank) %>% 
     generate(reps = 10000, type = "bootstrap") %>% 
     calculate(stat = "mean") %>% 
     get_ci(level = (1 - alpha))
   m1_ci$mmode <- "major"
-  
-  # Add the confidence intervals to the summary table
   mode_means_CIs <- bind_rows(m0_ci, m1_ci)
-  summary <- left_join(summary, mode_means_CIs)
-  colnames(summary) <- c("key_mode", "average_rank", "count", "diff_estimate", "lower_ci", "upper_ci")
-  
-
-  
-
-  plot_null_dist(summary, null_dist, alpha, output_file_1)
-  plot_compare(summary, mode_rank, output_file_2)
-  plot_keymode_dist(mode_rank, output_file_3)
+  return(mode_means_CIs)
 }
 
+# generates simulated data under a model of the null hypothesis 
+# and calculates the test statistic for each simulated sample
+gen_null_dist <- function(data){
+  set.seed(123)
+  null_dist <- data %>% 
+    specify(response = rank, explanatory = mmode) %>% 
+    hypothesize(null = "independence") %>% 
+    generate(reps = 10000, type = "permute") %>% 
+    calculate(stat = "diff in means", order = c("minor", "major"))
+  return(null_dist)
+}
 
 # plots and saves the null distribution with confidence interval and the test statistic from the original sample
 plot_null_dist <- function(summary_data, dist, alpha, fname){
