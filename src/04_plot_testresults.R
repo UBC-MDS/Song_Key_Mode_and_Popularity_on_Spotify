@@ -22,11 +22,11 @@ library(infer)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-data_input_file <- args[1] #"./data/clean_top_tracks.csv"
-summary_input_file <- args[2] #"./data/summary_data.csv"
-output_file_1 <- args[3] #"./results/figure/Fig03_Test_Ddistr_Plot.png"
-output_file_2 <- args[4] #"./results/figure/Fig04_Sample_Compare_Plot.png"
-output_file_3 <- args[5] #"./results/figure/Fig05_Mode_Over_Rank_Plot.png"
+data_input_file <- "./data/clean_top_tracks.csv"
+summary_input_file <- "./data/summary_data.csv"
+output_file_1 <- "./results/figure/Fig03_Test_Ddistr_Plot.png"
+output_file_2 <- "./results/figure/Fig04_Sample_Compare_Plot.png"
+output_file_3 <- "./results/figure/Fig05_Mode_Over_Rank_Plot.png"
 
 main <- function(){ 
   
@@ -74,45 +74,61 @@ main <- function(){
   summary <- left_join(summary, mode_means_CIs)
   colnames(summary) <- c("key_mode", "average_rank", "count", "diff_estimate", "lower_ci", "upper_ci")
   
+
+  
+
+  plot_null_dist(summary, null_dist, alpha, output_file_1)
+  plot_compare(summary, mode_rank, output_file_2)
+  plot_keymode_dist(mode_rank, output_file_3)
+}
+
+
+# plots and saves the null distribution with confidence interval and the test statistic from the original sample
+plot_null_dist <- function(summary_data, dist, alpha, fname){
+  
   # Calculate confidence interval for difference in means
-  (threshold <- quantile(null_dist$stat, c(alpha/2, 1-alpha/2)))
-  
+  (threshold <- quantile(dist$stat, c(alpha/2, 1-alpha/2)))
+
   # Extract the original sample's test statistic from the summary input file
-  rank_diff_estimate <- summary[['diff_estimate']][[1]]
-  
+  rank_diff_estimate <- summary_data[['diff_estimate']][[1]]
+
   # get the p-value
-  p_value <- null_dist %>% 
+  p_value <- dist %>% 
     get_pvalue(obs_stat = rank_diff_estimate, direction = "two_sided")
   
-  # visualize the null distribution with confidence interval and the test statistic from the original sample
-  (null_dist_plot <- null_dist %>% visualize()) +
-    geom_vline(xintercept = c(threshold[[1]], 
-                              threshold[[2]]), 
-               color = "blue",
-               lty = 2) +
-    geom_vline(xintercept = rank_diff_estimate, color = "red") +
-    xlab("Difference in mean song ranking between key-modes") +
-    annotate("text", x = 15, y = 1500, label = paste("P-Value", p_value))
+  dist %>% visualize() +
+  geom_vline(xintercept = c(threshold[[1]], 
+                            threshold[[2]]), 
+             color = "blue",
+             lty = 2) +
+  geom_vline(xintercept = rank_diff_estimate, color = "red") +
+  xlab("Difference in mean song ranking between key-modes") +
+  annotate("text", x = 15, y = 1500, label = paste("P-Value", p_value))
 
   # write the above plot to output file
-  ggsave(output_file_1)
-  
-  # visualize the estimates and key-mode ranking means' ci's side by side
-  ggplot(summary, aes(x = key_mode, y = average_rank)) +
-      geom_point() +
-      geom_jitter(aes(x = mmode, y = rank, color = mmode), 
-                  data = mode_rank, 
-                  width = 0.2) +
-      geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), 
-                    width = 0.1) +
-      ylab("Ranking") + 
-      labs(colour="Key-mode") + # set legend title
-      theme_bw()
+  ggsave(fname)
+}
+
+# Plots and saves a comparison of the estimates and key-mode ranking means' CIs side by side
+plot_compare <- function(summary_data, data, fname){
+  ggplot(summary_data, aes(x = key_mode, y = average_rank)) +
+    geom_point() +
+    geom_jitter(aes(x = mmode, y = rank, color = mmode), 
+                data = data, 
+                width = 0.2) +
+    geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), 
+                  width = 0.1) +
+    ylab("Ranking") + 
+    labs(colour="Key-mode") + # set legend title
+    theme_bw()
   
   # write the above plot to output file
-  ggsave(output_file_2)
-  
-  ggplot(mode_rank, aes(x = rank, y=c(0))) +
+  ggsave(fname)
+}
+
+# Plots and saves the distribution of song key-mode across song rankings
+plot_keymode_dist <- function(data, fname){
+  ggplot(data, aes(x = rank, y=c(0))) +
     geom_dotplot(aes(fill = mmode, colour = mmode), 
                  dotsize = .9, 
                  binwidth = 1) +
@@ -123,10 +139,10 @@ main <- function(){
     theme(axis.title.y=element_blank())
   
   # write the above plot to output file
-  ggsave(output_file_3, height = 1.5, width = 7)
-  
+  ggsave(fname, height = 1.5, width = 7)
 }
 
 # call main function
 main()
+
 

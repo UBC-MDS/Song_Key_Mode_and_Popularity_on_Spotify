@@ -16,25 +16,31 @@ library(tidyverse)
 
 # read in command line arguments
 args <- commandArgs(trailingOnly = TRUE)
-input_file <- args[1]
-output_file <- args[2]
+input_file <- args[1]#'./data/clean_top_tracks.csv'
+output_file <- args[2]#'./data/summary_data.csv'
 
 main <- function(){ 
   
   # read in data
-  data <- read_csv(input_file,
+  song_data <- read_csv(input_file,
                    col_types = cols(mmode = col_character()))
   
-  # calculate and summarize the ranking data statistics
-  rank_summary <- data %>% 
+  # create a summary table
+  song_rank_summary <- summary_table(song_data)
+
+  # write summary to output file
+  summary_data <- write_csv(song_rank_summary, output_file)
+}  
+
+# calculates and summarizes the ranking data statistics
+summary_table <- function(x){
+  rank_summary <- x %>% 
     mutate(mmode = factor(mmode, labels=c("minor", "major"))) %>% 
     group_by(mmode) %>% 
     summarize(avg_rank = mean(rank), count = n()) %>% 
     mutate(diff_estimate = diff(avg_rank))   # calculate the test statistic
-  
-  # write summary to output file
-  summary_data <- write_csv(rank_summary, output_file)
-}  
+  return(rank_summary)
+}
 
 # call main function
 main()
