@@ -96,8 +96,9 @@ Link to the data sets: We loaded the dataset using tidyverse in R.
 
 https://www.kaggle.com/nadintamer/top-tracks-of-2017
 
-** Data Attributes We Are Working With**
-*Source: [Spotify Top 100 Tracks](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/)
+**Data Attributes We Are Working With**
+*Source: [Spotify Top 100 Tracks](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/)  
+_Note: No license info available_
 
 * id - Spotify URI of the song
 * name - Name of the song

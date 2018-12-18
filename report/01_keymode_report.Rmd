@@ -12,7 +12,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Is the popularity of songs in a major key different than songs in a minor key? (Are they more likely to be in the Top 100?) This is the question we will try to answer by looking at and analyzing Spotify's Top 100 streamed songs! 
 
-First of all, in music, "keys" are sets of notes which sound harmonious together. One of the most distinguishing features of a musical key is its "mode" which we can categorize as "major" or "minor." These two modes affect the mood of music similarly to how certain beats may make songs more "likable." Music written in a major key-mode usually sounds happy, while music written in a minor key-mode usually sounds sad or serious. We are interested in whether these modes (major vs. minor) of songs' keys affect their popularity.
+First of all, in music, "keys" are sets of notes which sound harmonious together. One of the most distinguishing features of a musical key is its "mode" which we can categorize as "major" or "minor." These two modes affect the mood of music similarly to how certain beats may make songs more "likable." Music written in a major key-mode usually sounds happy, while music written in a minor key-mode usually sounds sad or serious. 
+
+It may seem intuitive that, because they sound "happier," songs in a major key would be more popular, the assumption being that people are more attracted to happy sounding songs than songs that sound sad or serious.  However, the prevalence of songs written in a minor key-mode appears to contradict this assumption, and so we are interested in whether these modes (major vs. minor) of songs' keys actually affect their popularity.  We hope that answering this question will help us understand the extent to which key-mode is a factor that makes certain songs more widely appealing to than others to listeners.
 
 Spotify is a music streaming platform. They have become an important platform as they currently have 191 million users. 87 million of these users, pay in order to be premium users. Their Top 100 is defined by the songs that are streamed the most throught a year. 
 
