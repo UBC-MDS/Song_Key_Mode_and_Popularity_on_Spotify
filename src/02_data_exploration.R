@@ -21,9 +21,9 @@ library(gridExtra)
 
 
 args <- commandArgs(trailingOnly = TRUE)
-input <- 'data/clean_top_tracks.csv'
-output1 <- './results/figure/Fig01_Mode_Viz.png'
-output2 <- './results/figure/Fig02_Explore_Mode_and_Features.png'
+input <- args[1] #'data/clean_top_tracks.csv'
+output1 <- args[2] #'./results/figure/Fig01_Mode_Viz.png'
+output2 <- args[3] #'./results/figure/Fig02_Explore_Mode_and_Features.png'
 
 
 main <- function(){ 
